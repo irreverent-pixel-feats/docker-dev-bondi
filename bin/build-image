@@ -1,0 +1,13 @@
+#!/bin/sh -eux
+
+TAG_PREFIX="${1:?"The tag prefix"}"
+GHC_VER="${2:?"The version of GHC to install"}"
+CABAL_VER="${3:?"The version of cabal to install"}"
+VERSION="${4:?"The suffix to mark the version if necessary (include the '-' or other delimiter)"}"
+
+docker build \
+  --tag "${TAG_PREFIX}-${GHC_VER}-${CABAL_VER}${VERSION}" \
+  --squash \
+  --build-arg "GHC_VERSION=${GHC_VER}" \
+  --build-arg "CABAL_VER=${CABAL_VER}" \
+  .

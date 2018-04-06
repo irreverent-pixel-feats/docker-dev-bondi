@@ -1,0 +1,13 @@
+#!/bin/bash -eux
+
+REPO="${1:?"The Repo to push to"}"
+BASE_TAG="${2:?"The tag prefix"}"
+VERSION="${3:?"The version"}"
+
+cat "bin/build-matrix" | while IFS="_" read -r -a cells; do
+  GHC_VERSION="${cells[0]}"
+  CABAL_VER="${cells[1]}"
+
+  bin/build-image "${REPO}:${BASE_TAG}" "${GHC_VERSION}" "${CABAL_VER}" "-${VERSION}"
+  bin/build-image "${REPO}:${BASE_TAG}" "${GHC_VERSION}" "${CABAL_VER}" ""
+done
