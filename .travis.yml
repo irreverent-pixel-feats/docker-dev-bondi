@@ -4,6 +4,11 @@ language: generic
 services:
   - docker
 
+matrix:
+  include:
+  - env: GHCVER=8.0.2 CABALVER=1.24
+  - env: GHCVER=8.0.2 CABALVER=2.0
+
 script:
   - bin/ci
 

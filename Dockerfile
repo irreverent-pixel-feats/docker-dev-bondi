@@ -1,4 +1,4 @@
-FROM irreverent-pixel-feats:ubuntu_xenial-20180323222525-c66625b
+FROM irreverentpixelfeats/dev-base:ubuntu_xenial-20180323222525-c66625b
 MAINTAINER Dom De Re <domdere@irreverentpixelfeats.com>
 
 ARG GHC_VERSION
@@ -44,3 +44,8 @@ RUN mkdir -p ~/bin/packages/pointful \
   && cabal install -j ghc-mod \
   && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghc-mod /usr/local/bin/ghc-mod \
   && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghci-mod /usr/local/bin/ghci-mod
+
+ADD data tmp
+
+RUN mkdir -p /var/versions \
+  && cp /tmp/version /var/versions/haskell-dev

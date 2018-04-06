@@ -1,7 +1,7 @@
 REPO = irreverentpixelfeats/dev-haskell
 BASE_TAG = ubuntu_xenial
 
-.PHONY: version publish deps build image all
+.PHONY: version deps build image all
 
 version:
 	bin/git-version ./latest-version
@@ -11,9 +11,6 @@ version:
 deps: version
 
 build: deps Dockerfile
-	bin/build-images "${REPO}" "${BASE_TAG}" "$(shell cat "data/version")"
-
-publish: build
-	bin/ci.publish "${REPO}" "${BASE_TAG}" "$(shell cat "data/version")"
+	bin/build-image "${REPO}:${BASE_TAG}" "${GHCVER}" "${CABALVER}" "$(shell cat "data/version")"
 
 all: build image
