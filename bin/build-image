@@ -8,10 +8,10 @@ VERSION="${4:?"The suffix to mark the version"}"
 TAG1="${TAG_PREFIX}-${GHC_VER}"
 TAG2="${TAG_PREFIX}-${GHC_VER}-${CABAL_VER}"
 
-docker pull "${TAG}" || true
+docker pull "${TAG1}" || true
 
 docker build \
-  --cache-from "${TAG}" \
+  --cache-from "${TAG1}" \
   --tag "${TAG1}" \
   --tag "${TAG2}" \
   --build-arg "GHC_VERSION=${GHC_VER}" \
