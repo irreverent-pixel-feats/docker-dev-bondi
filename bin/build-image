@@ -7,7 +7,6 @@ VERSION="${4:?"The suffix to mark the version if necessary (include the '-' or o
 
 docker build \
   --tag "${TAG_PREFIX}-${GHC_VER}-${CABAL_VER}${VERSION}" \
-  --squash \
   --build-arg "GHC_VERSION=${GHC_VER}" \
   --build-arg "CABAL_VER=${CABAL_VER}" \
   .
