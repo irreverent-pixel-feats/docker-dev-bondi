@@ -5,8 +5,8 @@ GHC_VER="${2:?"The version of GHC to install"}"
 CABAL_VER="${3:?"The version of cabal to install"}"
 VERSION="${4:?"The suffix to mark the version"}"
 
-TAG1="${TAG_PREFIX}-${GHC_VER}"
-TAG2="${TAG_PREFIX}-${GHC_VER}-${CABAL_VER}"
+TAG1="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}"
+TAG2="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}-${VERSION}"
 
 docker pull "${TAG1}" || true
 
