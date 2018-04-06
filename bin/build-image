@@ -8,29 +8,12 @@ VERSION="${4:?"The suffix to mark the version"}"
 TAG1="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}"
 TAG2="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}-${VERSION}"
 
-# previously was relying on prior images on dockerhub,
-# but these dont get uploaded on fails
-# in particular on time outs
-# These allow for progress to be saved between
-# failed builds
-function create_cache_on_fail () {
-  docker save -o "${HOME}/docker-cache/${GHC_VER}-${CABAL_VER}.tar.gz" "$(docker image ls -a -q | head -n 1)"
-  exit 1
-}
+docker pull "${TAG1}" || true
 
-mkdir -p "~/docker-cache"
-
-docker import "${HOME}/docker-cache/${GHC_VERSION}-${CABAL_VER}.tar.gz" "${TAG1}" \
-  || docker pull "${TAG1}" \
-  || true
-
-timeout 30m docker build \
+docker build \
   --cache-from "${TAG1}" \
   --tag "${TAG1}" \
   --tag "${TAG2}" \
   --build-arg "GHC_VERSION=${GHC_VER}" \
   --build-arg "CABAL_VER=${CABAL_VER}" \
-  . \
-  || create_cache_on_fail
-
-docker save -o "${HOME}/docker-cache/${GHC_VER}-${CABAL_VER}.tar.gz" "$(docker image ls -a -q | head -n 1)"
+  .

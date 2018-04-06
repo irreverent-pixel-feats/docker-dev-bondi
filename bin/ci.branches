@@ -1,5 +1,3 @@
 #!/bin/sh -eux
 
-mkdir -p ~/docker-cache
-
 make build -j

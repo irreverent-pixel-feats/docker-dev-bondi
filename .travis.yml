@@ -4,10 +4,6 @@ language: generic
 services:
   - docker
 
-cache:
-  directories:
-    - $HOME/docker-cache
-
 matrix:
   include:
   - env: GHCVER=8.0.2 CABALVER=1.24

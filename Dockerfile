@@ -22,27 +22,23 @@ RUN mkdir -p ~/bin/packages/pointful \
   && cd ~/bin/packages/pointful \
   && cabal sandbox init \
   && cabal install -j pointful \
-  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
-
-RUN mkdir -p ~/bin/packages/pointfree \
+  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful \
+  && mkdir -p ~/bin/packages/pointfree \
   && cd ~/bin/packages/pointfree \
   && cabal sandbox init \
   && cabal install -j pointfree \
-  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree
-
-RUN mkdir -p ~/bin/packages/hoogle \
+  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree \
+  && mkdir -p ~/bin/packages/hoogle \
   && cd ~/bin/packages/hoogle \
   && cabal sandbox init \
   && cabal install -j hoogle \
-  && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hoogle /usr/local/bin/hoogle
-
-RUN mkdir -p ~/bin/packages/hasktags \
+  && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hoogle /usr/local/bin/hoogle \
+  && mkdir -p ~/bin/packages/hasktags \
   && cd ~/bin/packages/hasktags \
   && cabal sandbox init \
   && cabal install -j hasktags \
-  && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hasktags /usr/local/bin/hasktags
-
-RUN mkdir -p ~/bin/packages/ghc-mod \
+  && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hasktags /usr/local/bin/hasktags \
+  && mkdir -p ~/bin/packages/ghc-mod \
   && cd ~/bin/packages/ghc-mod \
   && cabal sandbox init \
   && cabal install -j ghc-mod \
