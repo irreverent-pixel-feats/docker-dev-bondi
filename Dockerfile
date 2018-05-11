@@ -24,11 +24,11 @@ RUN mkdir -p ~/bin/packages/pointful \
   && cabal install -j pointful \
   && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
 
-RUN mkdir -p ~/bin/packages/pointfree \
-  && cd ~/bin/packages/pointfree \
-  && cabal sandbox init \
-  && cabal install -j pointfree \
-  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree
+#RUN mkdir -p ~/bin/packages/pointfree \
+#  && cd ~/bin/packages/pointfree \
+#  && cabal sandbox init \
+#  && cabal install -j pointfree \
+#  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree
 
 RUN mkdir -p ~/bin/packages/hoogle \
   && cd ~/bin/packages/hoogle \
