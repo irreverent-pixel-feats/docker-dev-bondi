@@ -7,7 +7,7 @@ ARG CABAL_VER
 RUN apt-get update -y \
   && apt-add-repository -y "ppa:hvr/ghc" \
   && apt-get update -y \
-  && apt-get install -y ghc-${GHC_VERSION} cabal-install-${CABAL_VER} \
+  && apt-get install -y hie-${GHC_VERSION} ghc-${GHC_VERSION} cabal-install-${CABAL_VER} \
   && ln -sf /opt/ghc/bin/* /usr/local/bin \
   && ln -sf /opt/cabal/bin/* /usr/local/bin \
   && cabal update
@@ -18,17 +18,17 @@ RUN mkdir -p ~/bin/packages/happy \
   && cabal install happy \
   && ln -sf ~/bin/packages/happy/.cabal-sandbox/bin/happy /usr/local/bin/happy
 
-RUN mkdir -p ~/bin/packages/pointful \
-  && cd ~/bin/packages/pointful \
-  && cabal sandbox init \
-  && cabal install -j pointful \
-  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
+#RUN mkdir -p ~/bin/packages/pointful \
+#  && cd ~/bin/packages/pointful \
+#  && cabal sandbox init \
+#  && cabal install -j pointful \
+#  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
 
-RUN mkdir -p ~/bin/packages/pointfree \
-  && cd ~/bin/packages/pointfree \
-  && cabal sandbox init \
-  && cabal install -j pointfree \
-  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree
+#RUN mkdir -p ~/bin/packages/pointfree \
+#  && cd ~/bin/packages/pointfree \
+#  && cabal sandbox init \
+#  && cabal install -j pointfree \
+#  && ln -sf ~/bin/packages/pointfree/.cabal-sandbox/bin/pointfree /usr/local/bin/pointfree
 
 RUN mkdir -p ~/bin/packages/hoogle \
   && cd ~/bin/packages/hoogle \
@@ -41,13 +41,6 @@ RUN mkdir -p ~/bin/packages/hasktags \
   && cabal sandbox init \
   && cabal install -j hasktags \
   && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hasktags /usr/local/bin/hasktags
-
-RUN mkdir -p ~/bin/packages/ghc-mod \
-  && cd ~/bin/packages/ghc-mod \
-  && cabal sandbox init \
-  && cabal install -j ghc-mod \
-  && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghc-mod /usr/local/bin/ghc-mod \
-  && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghci-mod /usr/local/bin/ghci-mod
 
 ADD data tmp
 
