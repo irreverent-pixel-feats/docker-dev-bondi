@@ -42,13 +42,6 @@ RUN mkdir -p ~/bin/packages/hasktags \
   && cabal install -j hasktags \
   && ln -sf ~/bin/packages/hoogle/.cabal-sandbox/bin/hasktags /usr/local/bin/hasktags
 
-RUN mkdir -p ~/bin/packages/ghc-mod \
-  && cd ~/bin/packages/ghc-mod \
-  && cabal sandbox init \
-  && cabal install -j ghc-mod \
-  && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghc-mod /usr/local/bin/ghc-mod \
-  && ln -sf ~/bin/packages/ghc-mod/.cabal-sandbox/bin/ghci-mod /usr/local/bin/ghci-mod
-
 ADD data tmp
 
 RUN mkdir -p /var/versions \
