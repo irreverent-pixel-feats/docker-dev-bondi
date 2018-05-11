@@ -18,11 +18,11 @@ RUN mkdir -p ~/bin/packages/happy \
   && cabal install happy \
   && ln -sf ~/bin/packages/happy/.cabal-sandbox/bin/happy /usr/local/bin/happy
 
-RUN mkdir -p ~/bin/packages/pointful \
-  && cd ~/bin/packages/pointful \
-  && cabal sandbox init \
-  && cabal install -j pointful \
-  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
+#RUN mkdir -p ~/bin/packages/pointful \
+#  && cd ~/bin/packages/pointful \
+#  && cabal sandbox init \
+#  && cabal install -j pointful \
+#  && ln -sf ~/bin/packages/pointful/.cabal-sandbox/bin/pointful /usr/local/bin/pointful
 
 #RUN mkdir -p ~/bin/packages/pointfree \
 #  && cd ~/bin/packages/pointfree \
