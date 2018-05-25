@@ -1,10 +1,10 @@
 #!/bin/sh -eux
 
 TAG_PREFIX="${1:?"The tag prefix"}"
-BONDI_VER="${2:?"The version of bondi to install"}"
+BONDI_SHA="${2:?"The SHA of the bondi repo to build"}"
 VERSION="${3:?"The suffix to mark the version"}"
 
-TAG1="${TAG_PREFIX}-${BONDI_VER}"
+TAG1="${TAG_PREFIX}-${BONDI_SHA}"
 TAG2="${TAG1}-${VERSION}"
 
 docker pull "${TAG1}" || true
@@ -13,5 +13,5 @@ docker build \
   --cache-from "${TAG1}" \
   --tag "${TAG1}" \
   --tag "${TAG2}" \
-  --build-arg "BONDI_VER=${BONDI_VER}" \
+  --build-arg "BONDI_SHA=${BONDI_SHA}" \
   .

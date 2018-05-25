@@ -11,6 +11,6 @@ version:
 deps: version
 
 build: deps Dockerfile
-	bin/build-image "${REPO}:${BASE_TAG}" "${BONDIVER}" "$(shell cat "data/version")"
+	bin/build-image "${REPO}:${BASE_TAG}" "${BONDISHA}" "$(shell cat "data/version")"
 
 all: build image
