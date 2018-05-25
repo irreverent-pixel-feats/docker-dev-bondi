@@ -16,7 +16,7 @@ RUN opam init \
   && git checkout "53494d1" \
   && cd .. \
   && opam pin add bondi bondi -y \
-  && cp "~/.opam/${OCAML_VER}/bin/bondi" /usr/local/bin \
+  && cp ~/.opam/${OCAML_VER}/bin/bondi /usr/local/bin \
   && rm -rfv bondi
 
 RUN mkdir -p /var/versions
