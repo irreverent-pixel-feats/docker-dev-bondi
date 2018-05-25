@@ -6,15 +6,10 @@ services:
 
 matrix:
   include:
-  - env: GHCVER=8.0.2 CABALVER=1.24
-  - env: GHCVER=8.0.2 CABALVER=2.0
-  - env: GHCVER=8.2.2 CABALVER=1.24
-  - env: GHCVER=8.2.2 CABALVER=2.0
-  - env: GHCVER=8.4.2 CABALVER=1.24
-  - env: GHCVER=8.4.2 CABALVER=2.0
+  - env: BONDIVER=2.04
 
 script:
-  - travis_wait 90 bin/ci
+  - bin/ci
 
 notifications:
   slack:

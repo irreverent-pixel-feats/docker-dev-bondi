@@ -1,12 +1,11 @@
 #!/bin/sh -eux
 
 TAG_PREFIX="${1:?"The tag prefix"}"
-GHC_VER="${2:?"The version of GHC to install"}"
-CABAL_VER="${3:?"The version of cabal to install"}"
-VERSION="${4:?"The suffix to mark the version"}"
+BONDI_VER="${2:?"The version of bondi to install"}"
+VERSION="${3:?"The suffix to mark the version"}"
 
-TAG1="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}"
-TAG2="${TAG_PREFIX}-${GHC_VER}_${CABAL_VER}-${VERSION}"
+TAG1="${TAG_PREFIX}-${BONDI_VER}"
+TAG2="${TAG1}-${VERSION}"
 
 docker pull "${TAG1}" || true
 
@@ -14,6 +13,5 @@ docker build \
   --cache-from "${TAG1}" \
   --tag "${TAG1}" \
   --tag "${TAG2}" \
-  --build-arg "GHC_VERSION=${GHC_VER}" \
-  --build-arg "CABAL_VER=${CABAL_VER}" \
+  --build-arg "BONDI_VER=${BONDI_VER}" \
   .
