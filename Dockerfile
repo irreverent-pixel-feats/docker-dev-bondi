@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN opam init \
   && opam switch "${OCAML_VER}" \
   && cd /tmp \
-  && git clone https://github.com/Barry-Jay/bondi.git \
+  && git clone https://github.com/javergar/bondi.git \
   && cd bondi \
   && git checkout "${BONDI_SHA}" \
   && cd .. \
