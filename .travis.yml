@@ -6,7 +6,7 @@ services:
 
 matrix:
   include:
-  - env: BONDISHA=53494d1
+  - env: BONDISHA=70f392b
 
 script:
   - bin/ci

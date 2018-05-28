@@ -13,7 +13,7 @@ RUN opam init \
   && cd /tmp \
   && git clone https://github.com/Barry-Jay/bondi.git \
   && cd bondi \
-  && git checkout "53494d1" \
+  && git checkout "${BONDI_SHA}" \
   && cd .. \
   && opam pin add bondi bondi -y \
   && cp ~/.opam/${OCAML_VER}/bin/bondi /usr/local/bin \
